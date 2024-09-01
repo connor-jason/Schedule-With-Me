@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import EnterName from './components/EnterName';
-import Events from './components/Events';
+import Activities from './components/Activities';
 import Summary from './components/Summary';
 import Calendar from './components/Calendar';
 import './App.css';
@@ -9,13 +9,15 @@ function App() {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [name, setName] = useState('');
+  const [activity, setActivity] = useState('');
 
   const handleName = (name : string) => {
-    setCurrentStep(2);
     setName(name)
+    setCurrentStep(2);
   };
 
-  const handleEvent = () => {
+  const handleActivity = (activity : string) => {
+    setActivity(activity);
     setCurrentStep(3);
   };
 
@@ -28,29 +30,32 @@ function App() {
   };
 
   return (
-    <div className="App flex flex-row w-1/2">
-      <div className="">
-          <div>person goes here</div>
+    <div className="App flex flex-row h-screen w-screen items-center justify-center">
+      <div className="h-1/2 w-1/2 flex items-center justify-center">
+        <div>person goes here</div>
       </div>
-      <div>
+      <div className="h-1/2 w-1/2 flex items-center justify-center">
         {currentStep === 1 && (
           <EnterName handleName={handleName} />
-          )}
+        )}
         {currentStep === 2 && (
           <div>
-            <Events nextStep={handleEvent} />
-            <div>{name}</div>
+            <div>hello, {name}</div>
+            <Activities handleActivity={handleActivity} />
           </div>
-          )}
+        )}
         {currentStep === 3 && (
-          <Calendar nextStep={handleData} />
-          )}
+          <div>
+            <div>{activity}</div>
+            <Calendar nextStep={handleData} />
+          </div>
+        )}
         {currentStep === 4 && (
           <Summary nextStep={handleSubmit} />
-          )}
+        )}
       </div>
     </div>
   );
-}
+        }  
 
 export default App;
