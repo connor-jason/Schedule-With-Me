@@ -21,7 +21,7 @@ function App() {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [name, setName] = useState<string>('');
   const [activity, setActivity] = useState<string>('');
-  const [calendar, setCalendar] = useState<Date>(new Date());
+  const [calendar, setCalendar] = useState<string>('');
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [currentImage, setCurrentImage] = useState<string>(person0);
 
@@ -77,7 +77,7 @@ function App() {
     setCurrentStep(3);
   };
 
-  const handleCalendar = (calendar : Date) => {
+  const handleCalendar = (calendar : string) => {
     setCalendar(calendar);
     setCurrentImageIndex(0);
     setCurrentStep(4);
@@ -94,12 +94,13 @@ function App() {
   };
 
   return (
-    <div className="App flex flex-row h-screen w-screen items-center justify-center">
-      <div className="h-1/2 w-1/2 flex items-center justify-center">
+    <div className="App flex flex-col-reverse md:flex-row h-screen w-screen items-center justify-center">
+      <div className=" h-1/2 md:w-[30vw] flex items-center justify-center">
         <img src={currentImage} alt="person" className="h-full" />
       </div>
-      {isLastImage() ? (
-        <div className="h-1/2 w-1/2 flex items-center justify-center">
+        <div className="h-1/3 md:w-[30vw] flex items-end md:items-center justify-center">
+        {isLastImage() && (
+          <>
           {currentStep === 1 && <EnterName handleName={handleName} />}
           {currentStep === 2 && (
             <div>
@@ -112,11 +113,9 @@ function App() {
             </div>
           )}
           {currentStep === 4 && <Summary name={name} activity={activity} calendar={calendar} handleSubmit={handleSubmit} />}
-        </div>
-      ) : (
-        <div className="h-1/2 w-1/2 flex items-center justify-center"/>
-      )}
-
+          </>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Summary({name, activity, calendar, handleSubmit} : {name: string, activity: string, calendar: Date, handleSubmit: () => void}) {
+function Summary({name, activity, calendar, handleSubmit} : {name: string, activity: string, calendar: string, handleSubmit: () => void}) {
 
     return (
         <div>
