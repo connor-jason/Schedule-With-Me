@@ -26,11 +26,11 @@ function App() {
   const [currentImage, setCurrentImage] = useState<string>(person0);
 
   const stageImages = useMemo(() => [
-    [{ image: person0, timeout: 500 }, { image: person1, timeout: 1500 }, { image: person2, timeout: 1500 }, { image: person3, timeout: 1500 }], // Stage 0
+    [{ image: person0, timeout: 500 }, { image: person1, timeout: 1500 }, {image: person0, timeout: 250}, { image: person2, timeout: 1500 }, { image: person3, timeout: 1500 }, {image: person0, timeout: 250}], // Stage 0
     [{ image: person4, timeout: 0 }], // Stage 1
-    [{ image: person5, timeout: 1500 }, { image: person6, timeout: 0 }], // Stage 2
-    [{ image: person7, timeout: 1500 }, { image: person8, timeout: 0 }], // Stage 3
-    [{ image: person9, timeout: 1500 }], // Stage 4
+    [{ image: person5, timeout: 1500 }, {image: person0, timeout: 250}, { image: person6, timeout: 0 }], // Stage 2
+    [{ image: person7, timeout: 1500 }, {image: person0, timeout: 250}, { image: person8, timeout: 0 }], // Stage 3
+    [{image: person0, timeout: 250}, { image: person9, timeout: 1500 }], // Stage 4
     [{ image: person10, timeout: 0 }] // Stage 5
   ], []);
 
@@ -94,11 +94,11 @@ function App() {
   };
 
   return (
-    <div className="App flex flex-col-reverse md:flex-row h-screen w-screen items-center justify-center">
-      <div className=" h-1/2 md:w-[30vw] flex items-center justify-center">
+    <div className="App flex flex-col-reverse md:flex-row h-screen w-screen items-center justify-center p-4 gap-4">
+      <div className=" md:w-[500px] md:max-w-1/2 flex items-center justify-center">
         <img src={currentImage} alt="person" className="h-full" />
       </div>
-        <div className="h-1/3 md:w-[30vw] flex items-end md:items-center justify-center">
+        <div className="h-1/3 md:w-[30vw] md:max-w-1/2 flex items-end md:items-left justify-center">
         {isLastImage() && (
           <>
           {currentStep === 1 && <EnterName handleName={handleName} />}

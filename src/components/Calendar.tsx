@@ -37,7 +37,7 @@ function Calendar({ handleCalendar }: { handleCalendar: (calendar: string) => vo
     };
 
     return (
-        <div className="flex flex-row">
+        <div className="flex flex-col gap-4 items-start">
             <div className="flex flex-col">
                 <h1>Enter a date</h1>
                 <input 
