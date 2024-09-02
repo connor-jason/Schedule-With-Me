@@ -31,19 +31,18 @@ function Calendar({ handleCalendar }: { handleCalendar: (calendar: string) => vo
             const formattedDate = formatDate(selectedDate);
             const formattedTime = formatTime(selectedTime);
             handleCalendar(`${formattedDate} - ${formattedTime}`);
-        } else {
-            alert("Please select a date and time.");
         }
     };
 
     return (
-        <div className="flex flex-col gap-4 items-start">
+        <div className="flex flex-col gap-1 items-start">
             <div className="flex flex-col">
                 <h1>Enter a date</h1>
                 <input 
                     type="date" 
                     value={selectedDate} 
                     onChange={(e) => setSelectedDate(e.target.value)} 
+                    className="border border-black mb-2 p-1"
                 />
             </div>
             <div className="flex flex-col">
@@ -52,6 +51,7 @@ function Calendar({ handleCalendar }: { handleCalendar: (calendar: string) => vo
                     type="time" 
                     value={selectedTime} 
                     onChange={(e) => setSelectedTime(e.target.value)} 
+                    className="border border-black mb-2 p-1"
                 />
             </div>
             <button onClick={handleSubmit}>Submit</button>

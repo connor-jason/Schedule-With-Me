@@ -8,15 +8,23 @@ function EnterName({handleName} : {handleName : (name : string) => void}) {
         setName(e.target.value);
     };
 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (name.trim() !== '') {
+            handleName(name);
+        }
+    };
+
     return (
-        <div>
+        <div className="flex flex-col">
             <h1>Enter your name</h1>
-            <form onSubmit={(e) => handleName(name)}>
+            <form className="items-start flex flex-col" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={name}    
                     onChange={handleChange}
-                    placeholder="Enter your name"
+                    placeholder=""
+                    className="border border-black b-1"
                 />
                 <button type="submit">Next</button>
             </form>

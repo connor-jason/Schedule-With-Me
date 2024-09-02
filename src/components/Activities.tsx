@@ -7,10 +7,11 @@ function Activities({handleActivity} : {handleActivity: (event : string) => void
     return (
         <div>
           {activities && activities.map((activity, index) => (
-            <div key={index} className="border border-black mb-2">
+            <div key={index}>
               <button 
                 type="button" 
                 onClick={() => handleActivity(activity)}
+                className="border border-black mb-2 p-1"
               >
                 {activity}
               </button>
