@@ -83,9 +83,14 @@ function App() {
     setCurrentStep(4);
   };
 
-  const handleSubmit = () => {
+  const handleYes = () => {
     setCurrentImageIndex(0);
     setCurrentStep(5);
+  };
+
+  const handleNo = () => {
+    setCurrentImageIndex(0);
+    setCurrentStep(0);
   };
 
   const isLastImage = () => {
@@ -112,7 +117,7 @@ function App() {
               <Calendar handleCalendar={handleCalendar} />
             </div>
           )}
-          {currentStep === 4 && <Summary name={name} activity={activity} calendar={calendar} handleSubmit={handleSubmit} />}
+          {currentStep === 4 && <Summary name={name} activity={activity} calendar={calendar} handleYes={handleYes} handleNo={handleNo} />}
           </>
         )}
       </div>

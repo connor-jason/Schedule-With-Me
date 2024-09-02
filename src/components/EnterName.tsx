@@ -18,15 +18,15 @@ function EnterName({handleName} : {handleName : (name : string) => void}) {
     return (
         <div className="flex flex-col">
             <h1>Enter your name</h1>
-            <form className="items-start flex flex-col" onSubmit={handleSubmit}>
+            <form className="items-start flex flex-col gap-2" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={name}    
                     onChange={handleChange}
                     placeholder=""
-                    className="border border-black b-1"
+                    className="border border-black b-1 rounded-lg px-1"
                 />
-                <button type="submit">Next</button>
+                <button type="submit" className="hover:underline">Next</button>
             </form>
         </div>
     )
