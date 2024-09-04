@@ -5,7 +5,7 @@ function Summary({ name, activity, calendar, handleYes, handleNo }: { name: stri
     const [showRestart, setShowRestart] = useState(false);
 
     const toggleRestart = () => {
-        setShowRestart(!showRestart);
+        setShowRestart(true);
     };
 
     return (
@@ -13,11 +13,22 @@ function Summary({ name, activity, calendar, handleYes, handleNo }: { name: stri
             <p>Name: {name}</p>
             <p>Activity: {activity}</p>
             <p>Date: {calendar}</p>
-            <div className="flex flex-row">
-                <button onClick={handleYes} className="hover:underline pr-12">Yes!</button>
-                <button onClick={toggleRestart} className="hover:underline">No!</button>
+            <div className="flex flex-row justify-around w-full">
+                <button onClick={handleYes} className="hover:underline p-1 border-2 border-black rounded-lg w-36">
+                    Yes!
+                </button>
+                <button onClick={toggleRestart} className="hover:underline p-1 border-2 border-black rounded-lg w-36">
+                    No!
+                </button>
             </div>
-            {showRestart && <button onClick={handleNo} className="hover:underline p-2">Restart?</button>}
+            <div className="w-full">
+                {showRestart && 
+                <div className="flex flex-row justify-around w-full">
+                    <button className="p-2 w-36"></button>
+                    <button onClick={handleNo} className="hover:underline p-2 border-2 border-black rounded-lg w-36">Restart?</button>
+                </div>
+                }
+            </div>
         </div>
     );
 }

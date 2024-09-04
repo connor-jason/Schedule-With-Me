@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import EnterName from './components/EnterName';
 import Activities from './components/Activities';
 import Summary from './components/Summary';
@@ -24,6 +25,8 @@ function App() {
   const [calendar, setCalendar] = useState<string>('');
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [currentImage, setCurrentImage] = useState<string>(person0);
+
+  const form = useRef();
 
   const stageImages = useMemo(() => [
     [{ image: person0, timeout: 500 }, { image: person1, timeout: 1500 }, {image: person0, timeout: 250}, { image: person2, timeout: 1500 }, { image: person3, timeout: 1500 }, {image: person0, timeout: 250}], // Stage 0
@@ -84,6 +87,8 @@ function App() {
   };
 
   const handleYes = () => {
+    // Send email with name, activity, and time
+    sendEmail();
     setCurrentImageIndex(0);
     setCurrentStep(5);
   };
@@ -98,26 +103,52 @@ function App() {
     return currentImageIndex === images.length - 1;
   };
 
+  const sendEmail = () => {
+    const templateParams = {
+      user_name: name,
+      activity: activity,
+      calendar: calendar,
+    };
+
+    emailjs
+      .send(
+        'service_7fdqvqe', // Replace with your EmailJS service ID
+        'template_e1w5y1k', // Replace with your EmailJS template ID
+        templateParams,
+        'LTwH67xrs1mmkzonA' // Replace with your EmailJS public key
+      )
+      .then(
+        () => {
+          console.log('Email successfully sent!');
+        },
+        (error) => {
+          console.log('Failed to send email...', error);
+        }
+      );
+  };
+
   return (
-    <div className="App flex flex-col-reverse md:flex-row h-screen w-screen items-center justify-center p-4 gap-4">
-      <div className=" md:w-[500px] md:max-w-1/2 flex items-center justify-center">
+    <div className="App flex flex-col-reverse md:flex-row h-screen w-screen items-center justify-center p-4 mt-8 ">
+      <div className="md:w-[500px] md:max-w-1/2 flex items-center justify-center">
         <img src={currentImage} alt="person" className="h-full" />
       </div>
-        <div className="h-1/3 md:w-[30vw] md:max-w-1/2 flex items-end md:items-left justify-center">
+      <div className="h-1/3 md:w-[30vw] md:max-w-1/2 flex items-end md:items-left justify-center">
         {isLastImage() && (
           <>
-          {currentStep === 1 && <EnterName handleName={handleName} />}
-          {currentStep === 2 && (
-            <div>
-              <Activities handleActivity={handleActivity} />
-            </div>
-          )}
-          {currentStep === 3 && (
-            <div>
-              <Calendar handleCalendar={handleCalendar} />
-            </div>
-          )}
-          {currentStep === 4 && <Summary name={name} activity={activity} calendar={calendar} handleYes={handleYes} handleNo={handleNo} />}
+            {currentStep === 1 && <EnterName handleName={handleName} />}
+            {currentStep === 2 && (
+              <div>
+                <Activities handleActivity={handleActivity} />
+              </div>
+            )}
+            {currentStep === 3 && (
+              <div>
+                <Calendar handleCalendar={handleCalendar} />
+              </div>
+            )}
+            {currentStep === 4 && (
+              <Summary name={name} activity={activity} calendar={calendar} handleYes={handleYes} handleNo={handleNo} />
+            )}
           </>
         )}
       </div>
