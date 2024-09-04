@@ -42,7 +42,8 @@ function Calendar({ handleCalendar }: { handleCalendar: (calendar: string) => vo
                     type="date" 
                     value={selectedDate} 
                     onChange={(e) => setSelectedDate(e.target.value)} 
-                    className="border-2 border-black mb-2 p-1 rounded-lg"
+                    className="border-2 border-black mb-2 p-1 rounded-lg w-[50vw] md:w-52"
+                    placeholder='Tap to select a date'
                 />
             </div>
             <div className="flex flex-col">
@@ -51,7 +52,8 @@ function Calendar({ handleCalendar }: { handleCalendar: (calendar: string) => vo
                     type="time" 
                     value={selectedTime} 
                     onChange={(e) => setSelectedTime(e.target.value)} 
-                    className="border-2 border-black mb-2 p-1 rounded-lg"
+                    className="border-2 border-black mb-2 p-1 rounded-lg w-[50vw] md:w-52"
+                    placeholder='Tap to select a time'
                 />
             </div>
             <button onClick={handleSubmit} className="hover:underline border-2 border-black rounded-lg p-1 w-36">Submit</button>

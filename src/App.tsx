@@ -16,7 +16,7 @@ import person8 from './img/person8.jpg';
 import person9 from './img/person9.jpg';
 import person10 from './img/person10.jpg';
 
-import './App.css';
+import './index.css';
 
 function App() {
   const [currentStep, setCurrentStep] = useState<number>(0);
@@ -128,11 +128,11 @@ function App() {
   };
 
   return (
-    <div className="App flex flex-col-reverse md:flex-row h-screen w-screen items-center justify-center p-4 mt-8 ">
-      <div className="md:w-[500px] md:max-w-1/2 flex items-center justify-center">
+    <div className="App flex flex-col-reverse md:flex-row min-h-screen h-auto overflow-auto w-screen items-center justify-center p-4">
+      <div className="md:relative absolute bottom-0 md:w-[500px] md:max-w-1/2 flex items-center justify-center">
         <img src={currentImage} alt="person" className="h-full" />
       </div>
-      <div className="h-1/3 md:w-[30vw] md:max-w-1/2 flex items-end md:items-left justify-center">
+      <div className="md:relative absolute bottom-1/2 md:h-1/3 w-full h-1/2 md:w-[30vw] md:max-w-1/2 flex items-end md:items-left justify-center">
         {isLastImage() && (
           <>
             {currentStep === 1 && <EnterName handleName={handleName} />}

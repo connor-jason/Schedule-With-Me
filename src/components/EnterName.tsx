@@ -24,7 +24,7 @@ function EnterName({handleName} : {handleName : (name : string) => void}) {
                     value={name}    
                     onChange={handleChange}
                     placeholder=""
-                    className="border-2 border-black rounded-lg px-1 mt-2"
+                    className="border-2 border-black rounded-lg px-1 mt-2 max-w-[75vw] md:w-96"
                 />
                 <button type="submit" className="hover:underline border-2 border-black rounded-lg p-1 w-36">Next</button>
             </form>
