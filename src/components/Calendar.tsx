@@ -6,15 +6,19 @@ function Calendar({ handleCalendar }: { handleCalendar: (calendar: string) => vo
 
     const formatDate = (dateString: string) => {
         const [year, month, day] = dateString.split('-');
+
+        const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
         const options: Intl.DateTimeFormatOptions = {
-            weekday: 'long', // Full day of the week (e.g., "Monday")
-            month: 'numeric', // Numeric month (e.g., "9")
-            day: 'numeric', // Numeric day (e.g., "4")
+            weekday: 'long',
+            month: 'numeric',
+            day: 'numeric',
         };
-        // Create a new Date object with the correct UTC year, month, and day
-        const date = new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
-        return date.toLocaleDateString(undefined, options); // Format: "Monday, 9/4"
+    
+        const weekday = date.toLocaleDateString(undefined, { weekday: 'long' });
+    
+        return `${weekday}, ${month}/${day}`;
     };
+    
     
 
     const formatTime = (timeString: string) => {
