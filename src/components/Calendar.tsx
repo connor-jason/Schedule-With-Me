@@ -5,14 +5,17 @@ function Calendar({ handleCalendar }: { handleCalendar: (calendar: string) => vo
     const [selectedTime, setSelectedTime] = useState<string>('');
 
     const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
+        const [year, month, day] = dateString.split('-');
         const options: Intl.DateTimeFormatOptions = {
             weekday: 'long', // Full day of the week (e.g., "Monday")
             month: 'numeric', // Numeric month (e.g., "9")
             day: 'numeric', // Numeric day (e.g., "4")
         };
+        // Create a new Date object with the correct UTC year, month, and day
+        const date = new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
         return date.toLocaleDateString(undefined, options); // Format: "Monday, 9/4"
     };
+    
 
     const formatTime = (timeString: string) => {
         const [hours, minutes] = timeString.split(':');
