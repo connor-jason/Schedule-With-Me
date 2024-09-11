@@ -12,6 +12,7 @@ This project was my real introduction to TypeScript, and though I found it chall
 - **HTML/CSS**
 
 ## 👩🏽‍🍳 Features:
+- Hand drawn illustrations by yours truly
 - Form to input name, select an activity, and propose a time for a meetup.
 - Step-by-step process with visual feedback.
 - Automatically sends an email when a meetup is confirmed.
@@ -19,6 +20,7 @@ This project was my real introduction to TypeScript, and though I found it chall
   
 ## 💭 Process:
 - The project began with setting up a React environment, integrating TypeScript to manage types and improve code structure.
+- Drew the little character using Notability, an iPad, and an Apple Pencil
 - Implemented EmailJS for sending email notifications once an event is scheduled.
 - Created a multi-step form to guide users through entering their name, choosing an activity, and selecting a time.
 - Managed state for the form and user inputs, ensuring smooth transitions between steps.
