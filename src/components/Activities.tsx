@@ -4,7 +4,7 @@ function Activities({ handleActivity }: { handleActivity: (event: string) => voi
     const [showTextBox, setShowTextBox] = useState(false);
     const [customActivity, setCustomActivity] = useState('');
 
-    const activities = ["target", "starbuck", "dunkin", "food", "tiktok rot", "other???"];
+    const activities = ["target", "starbuck", "dunkin", "food", "tiktok", "other???"];
 
     const handleButtonClick = (activity: string) => {
         if (activity === "other???") {
