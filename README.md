@@ -1,4 +1,4 @@
-# 🗓️ Schedule With Connor 🗓️
+# 🗓️ Schedule With Connor 🕒
 
 ## 👋 Intro:
 This project is a web-based scheduling tool where friends can set up a time to meet with me for casual events like going to Target, Starbucks, or other common outings. The tool simplifies organizing hangouts by allowing people to suggest a time and activity, and then I can confirm or reschedule.
