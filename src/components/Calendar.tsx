@@ -20,17 +20,17 @@ function Calendar({ handleCalendar }: { handleCalendar: (calendar: string) => vo
     };
     
     
-
+    // Format time to HOUR:MINUTE AM/PM
     const formatTime = (timeString: string) => {
         const [hours, minutes] = timeString.split(':');
         const date = new Date();
         date.setHours(parseInt(hours), parseInt(minutes));
         const options: Intl.DateTimeFormatOptions = {
-            hour: 'numeric', // Use numeric hour (e.g., "2")
-            minute: 'numeric', // Use numeric minute (e.g., "05")
-            hour12: true, // Use 12-hour format with AM/PM
+            hour: 'numeric', 
+            minute: 'numeric',
+            hour12: true,
         };
-        return date.toLocaleTimeString(undefined, options); // Format: "2:30 PM"
+        return date.toLocaleTimeString(undefined, options);
     };
 
     const handleSubmit = () => {
