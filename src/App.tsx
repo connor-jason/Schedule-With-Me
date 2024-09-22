@@ -112,10 +112,10 @@ function App() {
 
     emailjs
       .send(
-        'service_7fdqvqe', // Replace with your EmailJS service ID
-        'template_e1w5y1k', // Replace with your EmailJS template ID
+        'service_7fdqvqe',
+        'template_e1w5y1k',
         templateParams,
-        'LTwH67xrs1mmkzonA' // Replace with your EmailJS public key
+        'LTwH67xrs1mmkzonA'
       )
       .then(
         () => {
